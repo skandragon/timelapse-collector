@@ -24,11 +24,11 @@ IMAGE_PREFIX=docker.flame.org/library/
 #
 
 # These are targets for "make local"
-BINARIES = timelapse-collector-api
+BINARIES = timelapse-collector
 
 # These are the targets for Docker images.
 # Dockerfiles should have a target that ends in -image
-IMAGE_TARGETS = timelapse-collector-api
+IMAGE_TARGETS = timelapse-collector
 
 #
 # Below here lies magic...

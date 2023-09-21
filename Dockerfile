@@ -34,7 +34,8 @@ COPY . .
 ARG TARGETOS
 ARG TARGETARCH
 RUN mkdir /out
-RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags="-s -w" -o /out/timelapse-connector app/timelapse-collector/*.go
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags="-s -w" -o /out/timelapse-collector app/timelapse-collector/*.go
+RUN ls -l /out
 
 #
 # Establish a base OS image used by all the applications.
