@@ -17,7 +17,7 @@ var (
 )
 
 const (
-	timeFormat = "20060102030405"
+	timeFormat = "20060102150405"
 )
 
 func main() {
@@ -26,13 +26,13 @@ func main() {
 	log.Printf("interval: %s", interval.String())
 	log.Printf("baseFilename: %s", baseFilename)
 
-	capture(time.Now())
+	capture()
 	ticker := time.NewTicker(interval)
 
 	for {
 		select {
-		case t := <-ticker.C:
-			capture(t)
+		case <-ticker.C:
+			capture()
 		}
 	}
 }
@@ -48,8 +48,8 @@ func parseFlags() {
 	}
 }
 
-func capture(t time.Time) {
-	filename := fmt.Sprintf(baseFilename, t.UTC().Format(timeFormat))
+func capture() {
+	filename := fmt.Sprintf(baseFilename, time.Now().UTC().Format(timeFormat))
 	log.Printf("Capturing image to %s", filename)
 
 	resp, err := http.Get(url)
